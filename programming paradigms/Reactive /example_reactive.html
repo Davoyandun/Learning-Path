@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reactive State</title>
+  </head>
+
+  <body>
+    <h1>Reactive State</h1>
+    <form id="todo-form">
+      <input type="text" id="todo-item" placeholder="Chores to do" />
+      <input type="submit" value="Add" />
+    </form>
+    <h2>TODO List</h2>
+    <ul id="todo-list"></ul>
+    <script>
+      const d = document;
+
+      const state = {
+        todoList: [],
+      };
+
+      const template = () => {
+        if (state.todoList.length < 1) {
+          return `<p><em>TODO lIST EMPTY.</em></p>`;
+        }
+
+        let todos = state.todoList.map((item) => `<li>${item}</li>`).join("");
+
+        return todos;
+      };
+
+      const render = () => {
+        console.log(state);
+
+        const $list = d.getElementById("todo-list");
+        if (!$list) return;
+        $list.innerHTML = template();
+      };
+
+      const setState = (obj) => {
+        for (let key in obj) {
+          if (state.hasOwnProperty(key)) {
+            state[key] = obj[key];
+          }
+        }
+        render();
+      };
+      const getState = () => structuredClone(state);
+
+      d.addEventListener("DOMContentLoaded", render);
+      setState({
+        todoList: ["Task 1", "Task 2", "Task 3"],
+      });
+
+      const items = getState();
+      items.todoList.push("Task 4");
+      console.log("Estado mutable", items);
+      
+      console.log("Estado Inmutable", state);
+
+      d.addEventListener("submit", (e) => {
+        if (!e.target.matches("#todo-form")) return false;
+
+        e.preventDefault();
+
+        const $item = d.getElementById("todo-item");
+        if (!$item) return;
+
+        const lastState = getState();
+        lastState.todoList.push($item.value);
+        setState({ todoList: lastState.todoList });
+
+        $item.value = "";
+        $item.focus();
+      });
+    </script>
+  </body>
+</html>

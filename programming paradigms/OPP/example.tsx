@@ -1,11 +1,11 @@
-interface Vehicle {
-  drive(distance: number): void;
+interface IVehicle {
+  move(distance: number): void;
   refuel(liters: number): void;
   getDistance(): number;
   getFuel(): number;
 }
 
-class Car implements Vehicle {
+class Car implements IVehicle {
   private fuel: number;
   private distance: number;
 
@@ -14,7 +14,7 @@ class Car implements Vehicle {
     this.distance = 0;
   }
 
-  public drive(distance: number): void {
+  public move(distance: number): void {
     const fuelNeeded = distance / 5;
     if (fuelNeeded > this.fuel) {
       throw new Error("Not enough fuel to drive that distance.");
@@ -36,15 +36,17 @@ class Car implements Vehicle {
   }
 }
 
-class Truck implements Vehicle {
+class Truck implements IVehicle {
+  readonly brand: string;
   private fuel: number;
   private distance: number;
   constructor(fuel: number) {
     this.fuel = fuel;
     this.distance = 0;
+    this.brand = "Mercedes";
   }
 
-  public drive(distance: number): void {
+  public move(distance: number): void {
     const fuelNeeded = distance / 10;
     if (fuelNeeded > this.fuel) {
       throw new Error("Not enough fuel to drive that distance.");
@@ -68,22 +70,22 @@ class Truck implements Vehicle {
 
 class Driver {
   private name: string;
-  private vehicle: Vehicle;
+  protected vehicle: IVehicle;
 
-  constructor(name: string, vehicle: Vehicle) {
+  constructor(name: string, vehicle: IVehicle) {
     this.name = name;
     this.vehicle = vehicle;
   }
 
   public drive(distance: number): void {
-    this.vehicle.drive(distance);
+    this.vehicle.move(distance);
   }
 
   public refuel(liters: number): void {
     this.vehicle.refuel(liters);
   }
 
-  public getVehicle(): Vehicle {
+  public getVehicle(): IVehicle {
     return this.vehicle;
   }
 
@@ -110,5 +112,6 @@ console.log(
     .getFuel()} liters of fuel.`
 );
 
-
 driver2.drive(250); // Not enough fuel to drive that distance.
+console.log(truck.brand);
+
