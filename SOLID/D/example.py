@@ -6,6 +6,24 @@ class EmailSender(ABC):
     def send_email(self, to, subject, body):
         pass
 
+class HttpClient(ABC):
+    @abstractmethod
+    def get(self, url):
+        pass
+    @abstractmethod
+    def post(self):
+        pass
+   
+class  AuthenticationHandler(HttpClient):
+    def get():
+        return {
+            "user_name": "admin",
+            "password": "admin"
+        }
+    def post(user):
+         authenticion_case.add_user(user)
+         
+
 class GmailEmailSender(EmailSender):
     def __init__(self, username, password):
         self.username = username
@@ -33,3 +51,4 @@ class OutlookEmailSender(EmailSender):
             server.login(self.username, self.password)
             message = f"Subject: {subject}\n\n{body}"
             server.sendmail(self.username, to, message)
+
