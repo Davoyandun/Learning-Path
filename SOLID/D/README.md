@@ -1,0 +1,7 @@
+The D-principle, also known as the dependency inversion principle, states that high-level modules should not depend on lower-level modules, but instead both should depend on abstractions. Furthermore, the abstractions should not depend on the details, rather the details should depend on the abstractions.
+
+In Python, this can be achieved by defining interfaces or abstract classes that describe the general behavior of a set of related objects. Then, the concrete classes that implement these interfaces can depend on them, instead of the high-level classes directly depending on the low-level classes.
+
+For example, if we had a high-level class that requires the use of a database, instead of directly depending on a concrete class that handles the connection and queries to the database, we could define an interface that describes the methods needed to interact with the database. The concrete classes that handle the connection and queries to the database could then implement this interface, allowing the top-level class to depend on the interface instead of the concrete classes.
+
+In short, the D principle of SOLID is about relying on abstractions rather than concrete details. In Python, this can be achieved by defining interfaces or abstract classes to describe general behavior and allowing concrete classes to depend on them. This helps create a more modular and flexible code, making it easier to add new functionality and maintain your code over the long term.
