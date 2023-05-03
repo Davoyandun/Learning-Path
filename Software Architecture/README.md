@@ -18,3 +18,19 @@ There are several types of software architectures, each with their own advantage
 4. Microservices-based architecture: This approach breaks a monolithic application into small, self-contained, independent services, each with its own database and the ability to scale independently. It is common in high-load applications and in continuous delivery.
 
 5. Event-based architecture: This approach is based on the idea that actions in the system trigger events, which in turn trigger other actions in the system. It is common in real-time applications and in the processing of large volumes of data.
+
+
+
+# Clean Architecture 
+
+Clean Architecture is a software development concept that aims to create modular and maintainable software systems by separating concerns and dependencies in a layered architecture. The Clean Architecture approach emphasizes the separation of concerns between the different layers of the system, such as user interface, application logic, domain logic, and data access.
+
+At the core of Clean Architecture is the Dependency Inversion Principle, which states that high-level modules should not depend on low-level modules, and that both should depend on abstractions. This principle helps to decouple the different layers of the system, allowing for easier testing, maintenance, and evolution.
+
+In Clean Architecture, the system is divided into concentric circles, with the innermost circle containing the business logic, and the outermost circle containing the user interface and other external interfaces. Each layer is responsible for a specific set of concerns, and the dependencies between layers are carefully managed to ensure that high-level modules do not depend on low-level modules.
+
+Clean Architecture also emphasizes the use of interfaces to define the contracts between the different layers of the system. By using interfaces, each layer can define its own contract and provide a stable and well-defined API for other layers to interact with.
+
+Overall, Clean Architecture is a powerful approach to software development that can help to create modular, maintainable, and scalable software systems. By separating concerns and managing dependencies, Clean Architecture can help to reduce the complexity of software systems and make them more robust and easier to evolve over time.
+
+
