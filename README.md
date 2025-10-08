@@ -1,4 +1,4 @@
 # Learning-Path
-Este repositorio en una ruta de aprendizaje que voy formando con mi mentor, en el cual buscamos recordar  conceptos que todo buen desarrollador deberia saber, aprender cosas nuevas y porsupuesto, ponerlas en practica. 
+This repository is a learning path that I am building with my mentor, where we aim to revisit concepts that every good developer should know, learn new things, and of course, put them into practice.
 
 
