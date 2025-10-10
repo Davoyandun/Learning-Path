@@ -1,6 +1,7 @@
 import { SessionRepository } from "../domain/ports/SessionRepository";
 import { EmailSenderRepository } from "../domain/ports/EmailSenderRepository";
 import { Session } from "../domain/entities/Session";
+import { SchedulingRules } from "../domain/services/ScheduleSession";
 
 
 export class ScheduleSession {
@@ -20,11 +21,8 @@ export class ScheduleSession {
     )
 
     const existingSessions = await this.sessions.findByUserId(userId);
-    const hasConflict = existingSessions.some(s => 
-      (date < s.expiredAt && expireDate > s.createdAt)
-    );
-    if (hasConflict) {
-      throw new Error("SessionConflict");
+    if (!SchedulingRules.canSchedule(session, existingSessions)) {
+      throw new Error("UserHasAnotherSessionAtTheSameTime");
     }
     await this.sessions.save(session);
 

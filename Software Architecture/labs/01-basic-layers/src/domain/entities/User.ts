@@ -1,5 +1,5 @@
 import { generateId } from "../utils/utils"
-import { Email } from "./value-objects/Email"
+import { Email } from "../value-objects/Email"
 
 export class User {
     private constructor(

@@ -1,13 +1,11 @@
 import Router, { Request, Response } from 'express';
-import { ScheduleSession} from '../application/ScheduleSession';
-
-export const sessionRouter = Router();
-
+import { ScheduleSession } from '../application/ScheduleSession';
 
 export function sessionRoutes(
   scheduleSession: ScheduleSession
 ) {
-    sessionRouter.post('/sessions', async (req: Request, res: Response) => {
+    const router = Router();
+    router.post('/sessions', async (req: Request, res: Response) => {
     const { userId, date, expireDate, topic, userEmail } = req.body;
     try {
       const result = await scheduleSession.exec(
@@ -23,7 +21,6 @@ export function sessionRoutes(
         console.error(error);
     }
     
-
     });
-    return sessionRouter;
+    return router;
 }

@@ -3,7 +3,7 @@ import { sessionRoutes } from './src/presentation/Session';
 import { ScheduleSession } from './src/application/ScheduleSession';
 
 import { InMemorySessionRepository } from './src/infrastructure/db/InMemorySessionRepository';
-import { InMemoryEmailSenderRepository } from './src/infrastructure/db/EmalSenderRepository';
+import { InMemoryEmailSenderRepository } from './src/infrastructure/db/EmailSenderRepository';
 
 const app = express();
 app.use(express.json());
