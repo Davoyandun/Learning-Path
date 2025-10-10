@@ -11,9 +11,6 @@ export class ScheduleSession {
   ) {}
 
   async exec( userId: string, date: Date, expireDate: Date, topic: string, userEmail: string ) {
-    if( expireDate <= date ) {
-      throw new Error("ExpireDateMustBeAfterSessionDate");
-    }
     const session = Session.create(
         userId, 
         date,
