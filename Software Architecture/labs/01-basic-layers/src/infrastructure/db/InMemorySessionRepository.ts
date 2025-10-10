@@ -1,7 +1,7 @@
 import { SessionRepository } from "../../domain/ports/SessionRepository";
 import { Session } from "../../domain/entities/Session";
 
-export class InMemorySessionRepo implements SessionRepository {
+export class InMemorySessionRepository implements SessionRepository {
   private store: Session[] = [];
     async findById(id: string): Promise<Session | null> {
     return this.store.find(s => s.id === id) || null;}
