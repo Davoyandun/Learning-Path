@@ -11,11 +11,15 @@ export class Session {
     ) { }
 
     static create(userId: string, createdAt: Date, expiredAt: Date): Session {
-        const id = generateId()
-        if (createdAt >= expiredAt) {
-            throw new Error("Invalid date range")
+        const id = generateId();
+        const createdTime = createdAt.getTime();
+        const expiredTime = expiredAt.getTime();
+        if (Number.isNaN(createdTime) || Number.isNaN(expiredTime)) {
+            throw new Error("InvalidDate");
         }
-        return new Session(id, userId, createdAt, expiredAt)
-
+        if (createdTime >= expiredTime) {
+            throw new Error("InvalidDateRange");
+        }
+        return new Session(id, userId, createdAt, expiredAt);
     }
 }
