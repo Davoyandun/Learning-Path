@@ -1,0 +1,18 @@
+node_modules
+dist
+.env
+.DS_Store
+npm-debug.log
+yarn-error.log
+.vscode
+.idea
+*.log
+*.tsbuildinfo
+coverage
+# Si usas ts-node-dev o nodemon, puedes ignorar los archivos temporales que generan
+*.ts.tmp
+*.js.tmp
+# Ignorar configuraciones de editor específicas
+*.sublime-project
+*.sublime-workspace
+# Ignorar archivos de configuración de Docker
